@@ -20,11 +20,6 @@ const App = () => {
 					<Route path="/person" exact render={() => 1} />
 					<Route render={() => <h2>Page not found</h2>} />
 				</Switch>
-				<div className="row">
-					<div className="col">
-						{/* <h3>Users</h3> */}
-					</div>
-				</div>
 			</main>
 		</div>
 	);
