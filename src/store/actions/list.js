@@ -4,9 +4,9 @@ const fetchUsersListRequestAC = () => ({
 });
 
 const FETCH_USERS_LIST_SUCCESS = 'FETCH_USERS_LIST_SUCCESS';
-const fetchUsersListSuccessAC = data => ({
+const fetchUsersListSuccessAC = users => ({
 	type: FETCH_USERS_LIST_SUCCESS,
-	data,
+	users,
 });
 
 const FETCH_USERS_LIST_FAILURE = 'FETCH_USERS_LIST_FAILURE';

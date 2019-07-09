@@ -1,5 +1,4 @@
 import statuses from './constants';
-import { AuthServiceProvider, AuthServiceConsumer } from './AuthServiceContext';
-import { FilterServiceConsumer, FilterServiceProvider } from './filterServiceContext';
+import { AuthServiceProvider, AuthServiceConsumer } from './GithubServiceContext';
 
-export { statuses, AuthServiceProvider, AuthServiceConsumer, FilterServiceConsumer, FilterServiceProvider };
+export { statuses };
