@@ -22,7 +22,7 @@ const App = () => {
 				</Switch>
 				<div className="row">
 					<div className="col">
-						<h3>Users</h3>
+						{/* <h3>Users</h3> */}
 					</div>
 				</div>
 			</main>
