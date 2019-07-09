@@ -15,4 +15,26 @@ const fetchUsersListFailureAC = errorMsg => ({
 	errorMsg,
 });
 
+const fetchUsers = service => () => async (dispatch, getState) => {
+	// const {
+	// 	login: { userNameText, passwordText },
+	// } = getState();
+
+	dispatch(fetchUsersListRequestAC());
+
+	try {
+		const response = await service.getUsers();
+		debugger
+		const { login, message, status } = response;
+
+		if (status === 'ok') {
+			dispatch(fetchUsersListSuccessAC());
+		} else if (status === 'err') {
+			dispatch(fetchUsersListFailureAC(message));
+		}
+	} catch (err) {
+		dispatch(fetchUsersListFailureAC(err.message));
+	}
+};
+
 export { FETCH_USERS_LIST_REQUEST, FETCH_USERS_LIST_SUCCESS, FETCH_USERS_LIST_FAILURE };

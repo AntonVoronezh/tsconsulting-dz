@@ -1,4 +1,4 @@
 import statuses from './constants';
-import { AuthServiceProvider, AuthServiceConsumer } from './GithubServiceContext';
+import { GithubServiceProvider, GithubServiceConsumer } from './GithubServiceContext';
 
 export { statuses };
