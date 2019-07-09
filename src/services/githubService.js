@@ -15,7 +15,7 @@ export default class GithubService {
 			throw new Error(`Could not fetch ${url}, resived ${response.status}`);
 		}
 		
-		return response.data;
+		return response;
 	};
 
 	// tryLogin = async (email, password) => {

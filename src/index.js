@@ -16,11 +16,10 @@ const githubService = new GithubService();
 ReactDOM.render(
 	<Provider store={storeService}>
 		<GithubServiceProvider value={githubService}>
-					<BrowserRouter>
-			<App />
-		</BrowserRouter>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
 		</GithubServiceProvider>
-
 	</Provider>,
 
 	document.getElementById('root')

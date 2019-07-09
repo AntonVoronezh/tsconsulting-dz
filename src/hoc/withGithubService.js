@@ -6,8 +6,8 @@ const withGithubService = () => Wrapped => {
 	return props => {
 		return (
 			<GithubServiceConsumer>
-				{githubService => {
-					return <Wrapped {...props} githubService={githubService} />;
+				{GithubService => {
+					return <Wrapped {...props} githubService={GithubService} />;
 				}}
 			</GithubServiceConsumer>
 		);

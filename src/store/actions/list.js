@@ -21,15 +21,16 @@ const fetchUsers = service => () => async (dispatch, getState) => {
 	// } = getState();
 
 	dispatch(fetchUsersListRequestAC());
-debugger
+	
 	try {
 		const response = await service.getUsers();
+	
+		const { message, data } = response;
 		
-		const { login, message, status } = response;
 
-		if (status === 'ok') {
-			dispatch(fetchUsersListSuccessAC());
-		} else if (status === 'err') {
+		if (!message) {
+			dispatch(fetchUsersListSuccessAC(data));
+		} else {
 			dispatch(fetchUsersListFailureAC(message));
 		}
 	} catch (err) {
