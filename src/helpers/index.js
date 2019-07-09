@@ -1,4 +1,4 @@
 import statuses from './constants';
 import { GithubServiceProvider, GithubServiceConsumer } from './GithubServiceContext';
 
-export { statuses };
+export { statuses, GithubServiceProvider, GithubServiceConsumer };

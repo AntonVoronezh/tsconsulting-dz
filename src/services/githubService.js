@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default class AuthService {
+export default class GithubService {
 	_axiosInstance = axios.create({
 		baseURL: 'https://api.github.com/',
 		// withCredentials: true,

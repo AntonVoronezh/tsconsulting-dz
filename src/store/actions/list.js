@@ -21,10 +21,10 @@ const fetchUsers = service => () => async (dispatch, getState) => {
 	// } = getState();
 
 	dispatch(fetchUsersListRequestAC());
-
+debugger
 	try {
 		const response = await service.getUsers();
-		debugger
+		
 		const { login, message, status } = response;
 
 		if (status === 'ok') {
@@ -37,4 +37,4 @@ const fetchUsers = service => () => async (dispatch, getState) => {
 	}
 };
 
-export { FETCH_USERS_LIST_REQUEST, FETCH_USERS_LIST_SUCCESS, FETCH_USERS_LIST_FAILURE };
+export { FETCH_USERS_LIST_REQUEST, FETCH_USERS_LIST_SUCCESS, FETCH_USERS_LIST_FAILURE, fetchUsers };
