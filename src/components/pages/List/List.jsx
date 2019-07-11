@@ -1,10 +1,11 @@
 import React from 'react';
 
 import './List.css';
+import { ListItem } from '../../elements';
 
 const List = ({ users }) => {
 	const list = users.map(user => {
-		return <li key={user.id}>{user.login}</li>;
+		return <ListItem key={user.id} username={user.login} />;
 	});
 	return (
 		<div className="row">
