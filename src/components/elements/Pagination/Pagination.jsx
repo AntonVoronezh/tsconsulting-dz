@@ -1,33 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import ReactPaginate from 'react-paginate';
 
-import './Pagination.css';
-
-const PaginationE = ({ onChange, activePage, pagesTotal }) => {
-	const handlePageChange = i => {
-		onChange(i);
-	};
-
-	const arr = [];
-	for (let i = 1; i <= pagesTotal; i += 1) {
-		arr.push(i);
-	}
-
-	const pagination = arr.map(i => {
-		return (
-			<li key={i} onClick={() => handlePageChange(i)}>
-				<span className={activePage === i ? 'uk-background-primary href' : 'uk-disabled href'}>{i}</span>
-			</li>
-		);
-	});
-
-	return <ul className="uk-pagination">{pagination}</ul>;
+const Pagination = () => {
+	return (
+		<ReactPaginate
+			previousLabel={'previous'}
+			nextLabel={'next'}
+			breakLabel={'...'}
+			breakClassName={'page-item'}
+			pageCount={100}
+			marginPagesDisplayed={2}
+			pageRangeDisplayed={5}
+			containerClassName={'pagination'}
+			pageClassName={'page-item'}
+			previousClassName={'page-item'}
+			nextClassName={'page-item'}
+			pageLinkClassName={'page-link'}
+			previousLinkClassName={'page-link'}
+			nextLinkClassName={'page-link'}
+			activeClassName={'active'}
+		/>
+	);
 };
 
-export default PaginationE;
-
-PaginationE.propTypes = {
-	activePage: PropTypes.number.isRequired,
-	onChange: PropTypes.func.isRequired,
-};
-
+export default Pagination;
