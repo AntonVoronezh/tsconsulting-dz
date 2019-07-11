@@ -1,4 +1,5 @@
 import React from 'react';
+import Pagination from 'react-js-pagination';
 
 import './List.css';
 import { ListItem } from '../../elements';
@@ -12,6 +13,43 @@ const List = ({ users }) => {
 			<div className="col">
 				<h3>Users</h3>
 				<ul className="list-group">{list}</ul>
+				{/* <Pagination
+				className="pagination "
+					activePage={5}
+					itemsCountPerPage={10}
+					totalItemsCount={4500}
+					pageRangeDisplayed={10}
+					//   onChange={::this.handlePageChange}
+				/> */}
+				<nav aria-label="Page navigation example">
+					<ul className="pagination justify-content-end">
+						<li className="page-item disabled">
+							<a className="page-link" href="#" tabindex="-1" aria-disabled="true">
+								Previous
+							</a>
+						</li>
+						<li class="page-item">
+							<a className="page-link" href="#">
+								1
+							</a>
+						</li>
+						<li class="page-item">
+							<a className="page-link" href="#">
+								2
+							</a>
+						</li>
+						<li class="page-item">
+							<a className="page-link" href="#">
+								3
+							</a>
+						</li>
+						<li class="page-item">
+							<a className="page-link" href="#">
+								Next
+							</a>
+						</li>
+					</ul>
+				</nav>
 			</div>
 		</div>
 	);
