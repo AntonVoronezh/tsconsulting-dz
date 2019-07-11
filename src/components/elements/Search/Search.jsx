@@ -1,14 +1,28 @@
 import React, { useState } from 'react';
 
 const Search = () => {
-	const initialState = { title: '', available: false };
+	const [title, setTitle] = useState('');
 
-	const [title, setTitle] = useState(initialState);
+	const onChangeTitle = e => {
+		setTitle(title + e.target.value);
+	};
+
+	const searchHandler = e => {
+		e.preventDefault();
+		
+	}
 
 	return (
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+		<form className="form-inline my-2 my-lg-0" onSubmit={searchHandler}>
+			<input
+				className="form-control mr-sm-2"
+				type="search"
+				placeholder="Search"
+				aria-label="Search"
+				value={title}
+				onChange={onChangeTitle}
+			/>
+			<button className="btn btn-outline-success my-2 my-sm-0" type="submit">
 				Search
 			</button>
 		</form>
