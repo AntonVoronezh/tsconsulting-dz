@@ -31,6 +31,14 @@ export default class GithubService {
 
 		return this._getResourse(response, endPoint);
 	};
+	// /search/users
+	getUsersBySearch = async (text) => {
+		const endPoint = text ? `search/users?q=${text}` : `users`;
+		const response = await this._axiosInstance.get(endPoint);
+
+		return this._getResourse(response, endPoint);
+	};
+
 	// getUsers = async id => {
 	// 	const endPoint = `user-info/${id}`;
 	// 	const response = await this._axiosInstance.get(endPoint);

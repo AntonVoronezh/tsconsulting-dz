@@ -23,7 +23,7 @@ const fetchUsers = service => () => async (dispatch, getState) => {
 	dispatch(fetchUsersListRequestAC());
 	
 	try {
-		const response = await service.getUsers();
+		const response = await service.getUsersBySearch();
 	
 		const { message, data } = response;
 		

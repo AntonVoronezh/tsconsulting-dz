@@ -9,7 +9,6 @@ const Search = () => {
 
 	const searchHandler = e => {
 		e.preventDefault();
-		
 	}
 
 	return (
