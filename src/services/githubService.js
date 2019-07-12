@@ -11,6 +11,7 @@ export default class GithubService {
 
 
 	_getResourse =  (response, url) => {
+		debugger
 		if (!response.status === 200) {
 			throw new Error(`Could not fetch ${url}, resived ${response.status}`);
 		}
@@ -34,6 +35,13 @@ export default class GithubService {
 	// /search/users
 	getUsersBySearch = async (text, page) => {
 		const endPoint = `search/users?q=${text}&page=${page}`;
+		const response = await this._axiosInstance.get(endPoint);
+
+		return this._getResourse(response, endPoint);
+	};
+
+	getPersonByName = async (name) => {
+		const endPoint = `users/${name}`;
 		const response = await this._axiosInstance.get(endPoint);
 
 		return this._getResourse(response, endPoint);

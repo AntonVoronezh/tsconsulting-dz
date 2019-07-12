@@ -56,28 +56,27 @@ const changePersonAC = person => ({
 	person,
 });
 
-// const fetchPersonInfo = service => () => async (dispatch, getState) => {
-// 	const {
-// 		person: { query, pagPage },
-// 	} = getState();
+const fetchPersonInfo = service => () => async (dispatch, getState) => {
+	const {
+		person: { person },
+	} = getState();
 
-// 	dispatch(fetchPERSONListRequestAC());
+	dispatch(fetchPersonRequestAC());
 
-// 	try {
-// 		const response = await service.getPERSONBySearch(query, pagPage);
+	try {
+		const response = await service.getPersonByName(person);
 
-// 		const { message, data : {total_count, items} } = response;
+		const { message, data } = response;
 
-// 		if (!message) {
-// 			dispatch(addTotalCountAC(total_count))
-// 			dispatch(fetchPERSONListSuccessAC(items));
-// 		} else {
-// 			dispatch(fetchPERSONListFailureAC(message));
-// 		}
-// 	} catch (err) {
-// 		dispatch(fetchPERSONListFailureAC(err.message));
-// 	}
-// };
+		if (!message) {
+			dispatch(fetchPersonSuccessAC(data));
+		} else {
+			dispatch(fetchPersonFailureAC(message));
+		}
+	} catch (err) {
+		dispatch(fetchPersonFailureAC(err.message));
+	}
+};
 
 // const fetchPersonList = service => () => async (dispatch, getState) => {
 // 	const {
@@ -103,5 +102,11 @@ const changePersonAC = person => ({
 // };
 
 export {
-	CHANGE_PERSON, changePersonAC
+	CHANGE_PERSON,
+	changePersonAC,
+	ADD_PERSON_INFO,
+	fetchPersonInfo,
+	FETCH_PERSON_REQUEST,
+	FETCH_PERSON_SUCCESS,
+	FETCH_PERSON_FAILURE,
 };
