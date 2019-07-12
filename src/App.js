@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import { List } from './containers/pages/List';
 
 const App = () => {
-	const initialState = { title: '', available: false };
-
-	const [title, setTitle] = useState(initialState);
-
 	return (
 		<div className="container mt-20">
 			<header>

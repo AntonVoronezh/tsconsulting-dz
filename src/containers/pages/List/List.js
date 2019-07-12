@@ -9,18 +9,18 @@ import { Spinner } from '../../../components/elements';
 import { statuses } from '../../../helpers';
 
 class ListContainer extends Component {
-	componentDidMount() {
-		this.props.fetchUsers();
-	}
+	// componentDidMount() {
+	// 	this.props.fetchUsers();
+	// }
 
 	render() {
-		const { status, users } = this.props;
+		const { status, users, fetchUsers } = this.props;
 
 		if (status === statuses.REQUEST) {
 			return <Spinner />;
 		}
 
-		return <List users={users}/>;
+		return <List users={users} fetchUsers={fetchUsers} />;
 	}
 }
 
@@ -30,10 +30,21 @@ const mapStateToProps = ({ list }) => {
 	};
 };
 
+// const mapDispatchToProps = (dispatch, { githubService }) => {
+// 	return { fetchUsers: text => dispatch(fetchUsers(githubService)('text')) };
+// };
+// const mapDispatchToProps = (dispatch, { githubService }) => {
+// 	return bindActionCreators(
+// 		{
+// 			fetchUsers: fetchUsers(githubService),
+// 		},
+// 		dispatch
+// 	);
+// };
 const mapDispatchToProps = (dispatch, { githubService }) => {
 	return bindActionCreators(
 		{
-			fetchUsers: fetchUsers(githubService),
+			fetchUsers: text => fetchUsers(githubService)('text'),
 		},
 		dispatch
 	);

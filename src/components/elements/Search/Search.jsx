@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 
-const Search = () => {
+const Search = ({ fetchUsers }) => {
 	const [title, setTitle] = useState('');
 
 	const onChangeTitle = e => {
-		setTitle(title + e.target.value);
+		setTitle(e.target.value);
 	};
 
 	const searchHandler = e => {
 		e.preventDefault();
-	}
+		fetchUsers(title);
+	};
 
 	return (
 		<form className="form-inline my-2 my-lg-0" onSubmit={searchHandler}>

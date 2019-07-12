@@ -15,18 +15,22 @@ const fetchUsersListFailureAC = errorMsg => ({
 	errorMsg,
 });
 
-const fetchUsers = service => () => async (dispatch, getState) => {
-	// const {
-	// 	login: { userNameText, passwordText },
-	// } = getState();
+const ADD_SEARCH_QUERY = 'ADD_SEARCH_QUERY';
+const addSearchQueryAC = query => ({
+	type: ADD_SEARCH_QUERY,
+	query,
+});
+
+const fetchUsers = (service,...text) => text => async (dispatch, getState) => {
+	const d = getState()
+	debugger;
 
 	dispatch(fetchUsersListRequestAC());
-	
+
 	try {
 		const response = await service.getUsersBySearch();
-	
+
 		const { message, data } = response;
-		
 
 		if (!message) {
 			dispatch(fetchUsersListSuccessAC(data));
