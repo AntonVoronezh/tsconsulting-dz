@@ -29,17 +29,18 @@ const addTotalCountAC = totalCount => ({
 
 const fetchUsers = service => () => async (dispatch, getState) => {
 	const {
-		list: { query },
+		list: { query, pagPage },
 	} = getState();
 
 	dispatch(fetchUsersListRequestAC());
 
 	try {
-		const response = await service.getUsersBySearch(query);
+		const response = await service.getUsersBySearch(query, pagPage);
 
 		const { message, data : {total_count, items} } = response;
 
 		if (!message) {
+			dispatch(addTotalCountAC(total_count))
 			dispatch(fetchUsersListSuccessAC(items));
 		} else {
 			dispatch(fetchUsersListFailureAC(message));

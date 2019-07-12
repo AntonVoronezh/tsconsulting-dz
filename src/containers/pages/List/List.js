@@ -14,13 +14,13 @@ class ListContainer extends Component {
 	// }
 
 	render() {
-		const { status, users, fetchUsers, addQuery } = this.props;
-		
+		const { status, ...rest } = this.props;
+
 		if (status === statuses.REQUEST) {
 			return <Spinner />;
 		}
 
-		return <List users={users} fetchUsers={fetchUsers} addQuery={addQuery} />;
+		return <List {...rest} />;
 	}
 }
 
