@@ -1,4 +1,4 @@
-import { ADD_PERSON_INFO
+import { CHANGE_PERSON
 } from '../actions';
 import { statuses } from '../../helpers';
 
@@ -14,7 +14,7 @@ const initialState = {
 };
 
 const personReducer = (state = initialState, action) => {
-	const { type, users, errorMsg, query, totalCount, pagPage } = action;
+	const { type, errorMsg, totalCount, pagPage, person } = action;
 	switch (type) {
 		// case FETCH_USERS_LIST_REQUEST: {
 		// 	return {
@@ -50,10 +50,10 @@ const personReducer = (state = initialState, action) => {
 		// 		pagPage,
 		// 	};
 		// }
-		case ADD_PERSON_INFO: {
+		case CHANGE_PERSON: {
 			return {
 				...state,
-				pagPage,
+				person,
 			};
 		}
 		default:

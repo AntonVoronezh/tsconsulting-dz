@@ -3,7 +3,8 @@ import React from 'react';
 import './Person.css';
 import { ListItem, Pagination, Search } from '../../elements';
 
-const Person = ({ person, users, fetchUsers, addQuery, totalCount, changePagPage, pagPage }) => {
+const Person = ({ person }) => {
+
 	// const listUsers = users.map(user => {
 	// 	return <ListItem key={user.id} username={user.login} />;
 	// });
@@ -13,7 +14,7 @@ const Person = ({ person, users, fetchUsers, addQuery, totalCount, changePagPage
 	return (
 		<div className="row">
 			<div className="col">
-				<h3>Person</h3>
+				<h3>{person}</h3>
 				{/* {list} */}
 				{/* <Pagination
 					totalCount={totalCount}

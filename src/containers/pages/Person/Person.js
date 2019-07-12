@@ -4,18 +4,21 @@ import { bindActionCreators } from 'redux';
 import { withRouter } from "react-router";
 
 import { Person } from '../../../components/pages/Person';
-import { fetchUsers, addSearchQueryAC, changePagPageAC } from '../../../store/actions';
+import { changePersonAC } from '../../../store/actions';
 import { withGithubService } from '../../../hoc';
 import { Spinner } from '../../../components/elements';
 import { statuses } from '../../../helpers';
 
 class PersonContainer extends Component {
-	// componentDidMount() {
-	// 	this.props.fetchUsers();
-	// }
+	componentDidMount() {
+		const {changePerson, match: {params : {id}}} = this.props
+
+		changePerson(id);
+	}
 
 	render() {
 		const { status, match: {params : {id}}  } = this.props;
+
 		if (status === statuses.REQUEST) {
 			return <Spinner />;
 		}
@@ -35,9 +38,9 @@ const mapStateToProps = ({ list }) => {
 const mapDispatchToProps = (dispatch, { githubService }) => {
 	return bindActionCreators(
 		{
-			fetchUsers: fetchUsers(githubService),
-			addQuery: addSearchQueryAC,
-			changePagPage: changePagPageAC
+			// fetchUsers: fetchUsers(githubService),
+			changePerson: changePersonAC,
+			// changePagPage: changePagPageAC
 		},
 		dispatch
 	);
