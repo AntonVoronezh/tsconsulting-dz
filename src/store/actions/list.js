@@ -27,6 +27,12 @@ const addTotalCountAC = totalCount => ({
 	totalCount,
 });
 
+const CHANGE_PAG_PAGE = 'CHANGE_PAG_PAGE';
+const changePagPageAC = pagPage => ({
+	type: CHANGE_PAG_PAGE,
+	pagPage,
+});
+
 const fetchUsers = service => () => async (dispatch, getState) => {
 	const {
 		list: { query, pagPage },
@@ -57,5 +63,7 @@ export {
 	fetchUsers,
 	ADD_SEARCH_QUERY,
 	addSearchQueryAC,
-	ADD_TOTAL_COUNT
+	ADD_TOTAL_COUNT,
+	CHANGE_PAG_PAGE,
+	changePagPageAC
 };

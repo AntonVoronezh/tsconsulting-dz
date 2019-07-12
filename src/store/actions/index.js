@@ -6,6 +6,8 @@ import {
 	ADD_SEARCH_QUERY,
 	addSearchQueryAC,
 	ADD_TOTAL_COUNT,
+	CHANGE_PAG_PAGE,
+	changePagPageAC
 } from './list';
 
 export {
@@ -16,4 +18,6 @@ export {
 	ADD_SEARCH_QUERY,
 	addSearchQueryAC,
 	ADD_TOTAL_COUNT,
+	CHANGE_PAG_PAGE,
+	changePagPageAC
 };
