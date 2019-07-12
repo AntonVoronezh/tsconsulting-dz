@@ -8,6 +8,7 @@ import { statuses } from '../../helpers';
 
 const initialState = {
 	users: [],
+	totalCount: '',
 	status: statuses.INIT,
 	errorMsg: null,
 	query: '',

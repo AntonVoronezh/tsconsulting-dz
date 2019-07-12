@@ -31,10 +31,10 @@ const fetchUsers = service => () => async (dispatch, getState) => {
 	try {
 		const response = await service.getUsersBySearch(query);
 
-		const { message, data } = response;
+		const { message, data : {total_count, items} } = response;
 
 		if (!message) {
-			dispatch(fetchUsersListSuccessAC(data));
+			dispatch(fetchUsersListSuccessAC(items));
 		} else {
 			dispatch(fetchUsersListFailureAC(message));
 		}
