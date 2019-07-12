@@ -3,8 +3,7 @@ import React from 'react';
 import './List.css';
 import { ListItem, Pagination, Search } from '../../elements';
 
-const List = ({ users, fetchUsers, addQuery, totalCount }) => {
-
+const List = ({ users, fetchUsers, addQuery, totalCount, changePagPage, pagPage }) => {
 	const listUsers = users.map(user => {
 		return <ListItem key={user.id} username={user.login} />;
 	});
@@ -15,9 +14,15 @@ const List = ({ users, fetchUsers, addQuery, totalCount }) => {
 		<div className="row">
 			<div className="col">
 				<h3>Users</h3>
-				<Search fetchUsers={fetchUsers} addQuery={addQuery}/>
+				<Search fetchUsers={fetchUsers} addQuery={addQuery} />
 				{list}
-				<Pagination totalCount={totalCount} length={users.length}/>
+				<Pagination
+					totalCount={totalCount}
+					length={users.length}
+					changePagPage={changePagPage}
+					fetchUsers={fetchUsers}
+					pagPage={pagPage}
+				/>
 			</div>
 		</div>
 	);

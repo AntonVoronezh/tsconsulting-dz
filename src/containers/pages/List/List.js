@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { List } from '../../../components/pages/List';
-import { fetchUsers, addSearchQueryAC } from '../../../store/actions';
+import { fetchUsers, addSearchQueryAC, changePagPageAC } from '../../../store/actions';
 import { withGithubService } from '../../../hoc';
 import { Spinner } from '../../../components/elements';
 import { statuses } from '../../../helpers';
@@ -35,6 +35,7 @@ const mapDispatchToProps = (dispatch, { githubService }) => {
 		{
 			fetchUsers: fetchUsers(githubService),
 			addQuery: addSearchQueryAC,
+			changePagPage: changePagPageAC
 		},
 		dispatch
 	);

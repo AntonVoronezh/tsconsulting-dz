@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 
-const Pagination = ({ totalCount, length }) => {
+const Pagination = ({ totalCount, length, changePagPage, fetchUsers, pagPage }) => {
 	const pageCount = Math.ceil(totalCount / length);
 
-	const onPageChange = e => {
-		console.log(e)
-	}
+	const onPageChange = ({ selected }) => {
+		console.log(selected)
+		changePagPage(selected + 1);
+		fetchUsers();
+	};
 
 	const pag =
 		totalCount !== 0 ? (
@@ -27,6 +29,7 @@ const Pagination = ({ totalCount, length }) => {
 				nextLinkClassName={'page-link'}
 				activeClassName={'active'}
 				onPageChange={onPageChange}
+				forcePage={pagPage - 1}
 			/>
 		) : null;
 
