@@ -1,4 +1,13 @@
-import { CHANGE_PERSON, FETCH_PERSON_FAILURE, FETCH_PERSON_REQUEST, FETCH_PERSON_SUCCESS } from '../actions';
+import {
+	CHANGE_PERSON,
+	FETCH_PERSON_FAILURE,
+	FETCH_PERSON_REQUEST,
+	FETCH_PERSON_SUCCESS,
+	FETCH_PERSON_LIST_REQUEST,
+	FETCH_PERSON_LIST_SUCCESS,
+	FETCH_PERSON_LIST_FAILURE,
+	CHANGE_PAG_PAGEF,
+} from '../actions';
 import { statuses } from '../../helpers';
 
 const initialState = {
@@ -12,20 +21,14 @@ const initialState = {
 };
 
 const personReducer = (state = initialState, action) => {
-	const { type, errorMsg, totalCount, pagPage, person, personInfo } = action;
+	const { type, errorMsg, pagPage, person, personInfo, list } = action;
 	switch (type) {
-		// case ADD_TOTAL_COUNT: {
-		// 	return {
-		// 		...state,
-		// 		totalCount,
-		// 	};
-		// }
-		// case CHANGE_PAG_PAGE: {
-		// 	return {
-		// 		...state,
-		// 		pagPage,
-		// 	};
-		// }
+		case CHANGE_PAG_PAGEF: {
+			return {
+				...state,
+				pagPage,
+			};
+		}
 		case CHANGE_PERSON: {
 			return {
 				...state,
@@ -44,10 +47,33 @@ const personReducer = (state = initialState, action) => {
 				...state,
 				status: statuses.SUCCESS,
 				personInfo,
+				totalCount: personInfo.public_repos,
 				errorMsg: null,
 			};
 		}
 		case FETCH_PERSON_FAILURE: {
+			return {
+				...state,
+				status: statuses.FAILURE,
+				errorMsg,
+			};
+		}
+		case FETCH_PERSON_LIST_REQUEST: {
+			return {
+				...state,
+				status: statuses.REQUEST,
+				errorMsg: null,
+			};
+		}
+		case FETCH_PERSON_LIST_SUCCESS: {
+			return {
+				...state,
+				status: statuses.SUCCESS,
+				list,
+				errorMsg: null,
+			};
+		}
+		case FETCH_PERSON_LIST_FAILURE: {
 			return {
 				...state,
 				status: statuses.FAILURE,

@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactPaginate from 'react-paginate';
 
-const Pagination = ({ totalCount, length, changePagPage, fetchUsers, pagPage }) => {
+const Pagination = ({ totalCount, length, changePagPage, fetchPersonList, pagPage }) => {
 	const pageCount = Math.ceil(totalCount / length);
-
+	
 	const onPageChange = ({ selected }) => {
-		console.log(selected)
 		changePagPage(selected + 1);
-		fetchUsers();
+		fetchPersonList();
 	};
 
 	const pag =

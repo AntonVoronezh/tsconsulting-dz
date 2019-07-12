@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router';
 
 import { Person } from '../../../components/pages/Person';
-import { changePersonAC, fetchPersonInfo } from '../../../store/actions';
+import { changePersonAC, fetchPersonInfo, fetchPersonList, changePagPageACC } from '../../../store/actions';
 import { withGithubService } from '../../../hoc';
 import { Spinner } from '../../../components/elements';
 import { statuses } from '../../../helpers';
@@ -14,6 +14,7 @@ class PersonContainer extends Component {
 		const {
 			changePerson,
 			fetchPersonInfo,
+			fetchPersonList,
 			match: {
 				params: { id },
 			},
@@ -21,19 +22,17 @@ class PersonContainer extends Component {
 
 		changePerson(id);
 		fetchPersonInfo();
+		fetchPersonList();
 	}
 
 	render() {
-		const {
-			status,
-			...rest
-		} = this.props;
+		const { status, ...rest } = this.props;
 
 		if (status === statuses.REQUEST || !rest.personInfo) {
 			return <Spinner />;
 		}
 
-		return <Person {...rest}/>;
+		return <Person {...rest} />;
 	}
 }
 
@@ -46,10 +45,10 @@ const mapStateToProps = ({ person }) => {
 const mapDispatchToProps = (dispatch, { githubService }) => {
 	return bindActionCreators(
 		{
-			// fetchUsers: fetchUsers(githubService),
+			fetchPersonList: fetchPersonList(githubService),
 			changePerson: changePersonAC,
 			fetchPersonInfo: fetchPersonInfo(githubService),
-			// changePagPage: changePagPageAC
+			changePagPage: changePagPageACC
 		},
 		dispatch
 	);
