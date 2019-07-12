@@ -30,21 +30,10 @@ const mapStateToProps = ({ list }) => {
 	};
 };
 
-// const mapDispatchToProps = (dispatch, { githubService }) => {
-// 	return { fetchUsers: text => dispatch(fetchUsers(githubService)('text')) };
-// };
-// const mapDispatchToProps = (dispatch, { githubService }) => {
-// 	return bindActionCreators(
-// 		{
-// 			fetchUsers: fetchUsers(githubService),
-// 		},
-// 		dispatch
-// 	);
-// };
 const mapDispatchToProps = (dispatch, { githubService }) => {
 	return bindActionCreators(
 		{
-			fetchUsers: text => fetchUsers(githubService)('text'),
+			fetchUsers: fetchUsers(githubService),
 		},
 		dispatch
 	);

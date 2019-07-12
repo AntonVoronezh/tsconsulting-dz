@@ -21,8 +21,8 @@ const addSearchQueryAC = query => ({
 	query,
 });
 
-const fetchUsers = (service,...text) => text => async (dispatch, getState) => {
-	const d = getState()
+const fetchUsers = service => () => async (dispatch, getState) => {
+	const d = getState();
 	debugger;
 
 	dispatch(fetchUsersListRequestAC());
@@ -42,4 +42,4 @@ const fetchUsers = (service,...text) => text => async (dispatch, getState) => {
 	}
 };
 
-export { FETCH_USERS_LIST_REQUEST, FETCH_USERS_LIST_SUCCESS, FETCH_USERS_LIST_FAILURE, fetchUsers };
+export { FETCH_USERS_LIST_REQUEST, FETCH_USERS_LIST_SUCCESS, FETCH_USERS_LIST_FAILURE, fetchUsers, ADD_SEARCH_QUERY };

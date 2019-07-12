@@ -1,14 +1,20 @@
-import { FETCH_USERS_LIST_REQUEST, FETCH_USERS_LIST_SUCCESS, FETCH_USERS_LIST_FAILURE } from '../actions';
+import {
+	FETCH_USERS_LIST_REQUEST,
+	FETCH_USERS_LIST_SUCCESS,
+	FETCH_USERS_LIST_FAILURE,
+	ADD_SEARCH_QUERY,
+} from '../actions';
 import { statuses } from '../../helpers';
 
 const initialState = {
 	users: [],
 	status: statuses.INIT,
 	errorMsg: null,
+	query: '',
 };
 
 const listRreducer = (state = initialState, action) => {
-	const { type, users, errorMsg } = action;
+	const { type, users, errorMsg, query } = action;
 	switch (type) {
 		case FETCH_USERS_LIST_REQUEST: {
 			return {
@@ -30,6 +36,12 @@ const listRreducer = (state = initialState, action) => {
 				...state,
 				status: statuses.FAILURE,
 				errorMsg,
+			};
+		}
+		case ADD_SEARCH_QUERY: {
+			return {
+				...state,
+				query,
 			};
 		}
 		default:
