@@ -7,8 +7,10 @@ import {
 	addSearchQueryAC,
 	ADD_TOTAL_COUNT,
 	CHANGE_PAG_PAGE,
-	changePagPageAC
+	changePagPageAC,
 } from './list';
+
+import { CHANGE_PERSON, changePersonAC } from './person';
 
 export {
 	FETCH_USERS_LIST_REQUEST,
@@ -19,5 +21,7 @@ export {
 	addSearchQueryAC,
 	ADD_TOTAL_COUNT,
 	CHANGE_PAG_PAGE,
-	changePagPageAC
+	changePagPageAC,
 };
+
+export { CHANGE_PERSON, changePersonAC };

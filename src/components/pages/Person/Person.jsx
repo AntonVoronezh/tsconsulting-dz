@@ -4,7 +4,6 @@ import './Person.css';
 import { ListItem, Pagination, Search } from '../../elements';
 
 const Person = ({ person, users, fetchUsers, addQuery, totalCount, changePagPage, pagPage }) => {
-	debugger
 	// const listUsers = users.map(user => {
 	// 	return <ListItem key={user.id} username={user.login} />;
 	// });

@@ -50,58 +50,58 @@ const addPersonInfoAC = personInfo => ({
 	personInfo,
 });
 
-const fetchPersonInfo = service => () => async (dispatch, getState) => {
-	const {
-		list: { query, pagPage },
-	} = getState();
+const CHANGE_PERSON = 'CHANGE_PERSON';
+const changePersonAC = person => ({
+	type: CHANGE_PERSON,
+	person,
+});
 
-	dispatch(fetchPERSONListRequestAC());
+// const fetchPersonInfo = service => () => async (dispatch, getState) => {
+// 	const {
+// 		person: { query, pagPage },
+// 	} = getState();
 
-	try {
-		const response = await service.getPERSONBySearch(query, pagPage);
+// 	dispatch(fetchPERSONListRequestAC());
 
-		const { message, data : {total_count, items} } = response;
+// 	try {
+// 		const response = await service.getPERSONBySearch(query, pagPage);
 
-		if (!message) {
-			dispatch(addTotalCountAC(total_count))
-			dispatch(fetchPERSONListSuccessAC(items));
-		} else {
-			dispatch(fetchPERSONListFailureAC(message));
-		}
-	} catch (err) {
-		dispatch(fetchPERSONListFailureAC(err.message));
-	}
-};
+// 		const { message, data : {total_count, items} } = response;
 
-const fetchPersonList = service => () => async (dispatch, getState) => {
-	const {
-		list: { query, pagPage },
-	} = getState();
+// 		if (!message) {
+// 			dispatch(addTotalCountAC(total_count))
+// 			dispatch(fetchPERSONListSuccessAC(items));
+// 		} else {
+// 			dispatch(fetchPERSONListFailureAC(message));
+// 		}
+// 	} catch (err) {
+// 		dispatch(fetchPERSONListFailureAC(err.message));
+// 	}
+// };
 
-	dispatch(fetchPERSONListRequestAC());
+// const fetchPersonList = service => () => async (dispatch, getState) => {
+// 	const {
+// 		list: { query, pagPage },
+// 	} = getState();
 
-	try {
-		const response = await service.getPERSONBySearch(query, pagPage);
+// 	dispatch(fetchPERSONListRequestAC());
 
-		const { message, data : {total_count, items} } = response;
+// 	try {
+// 		const response = await service.getPERSONBySearch(query, pagPage);
 
-		if (!message) {
-			dispatch(addTotalCountAC(total_count))
-			dispatch(fetchPERSONListSuccessAC(items));
-		} else {
-			dispatch(fetchPERSONListFailureAC(message));
-		}
-	} catch (err) {
-		dispatch(fetchPERSONListFailureAC(err.message));
-	}
-};
+// 		const { message, data : {total_count, items} } = response;
+
+// 		if (!message) {
+// 			dispatch(addTotalCountAC(total_count))
+// 			dispatch(fetchPERSONListSuccessAC(items));
+// 		} else {
+// 			dispatch(fetchPERSONListFailureAC(message));
+// 		}
+// 	} catch (err) {
+// 		dispatch(fetchPERSONListFailureAC(err.message));
+// 	}
+// };
 
 export {
-	FETCH_PERSON_LIST_REQUEST,
-	FETCH_PERSON_LIST_SUCCESS,
-	FETCH_PERSON_LIST_FAILURE,
-	fetchPERSON,
-	ADD_TOTAL_COUNT,
-	CHANGE_PAG_PAGE,
-	changePagPageAC
+	CHANGE_PERSON, changePersonAC
 };
