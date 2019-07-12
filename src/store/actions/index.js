@@ -10,7 +10,14 @@ import {
 	changePagPageAC,
 } from './list';
 
-import { CHANGE_PERSON, changePersonAC, ADD_PERSON_INFO, fetchPersonInfo } from './person';
+import {
+	CHANGE_PERSON,
+	changePersonAC,
+	fetchPersonInfo,
+	FETCH_PERSON_FAILURE,
+	FETCH_PERSON_REQUEST,
+	FETCH_PERSON_SUCCESS,
+} from './person';
 
 export {
 	FETCH_USERS_LIST_REQUEST,
@@ -24,4 +31,11 @@ export {
 	changePagPageAC,
 };
 
-export { CHANGE_PERSON, changePersonAC, ADD_PERSON_INFO, fetchPersonInfo };
+export {
+	CHANGE_PERSON,
+	changePersonAC,
+	fetchPersonInfo,
+	FETCH_PERSON_FAILURE,
+	FETCH_PERSON_REQUEST,
+	FETCH_PERSON_SUCCESS,
+};

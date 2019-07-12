@@ -17,18 +17,18 @@ const fetchPersonListFailureAC = errorMsg => ({
 
 const FETCH_PERSON_REQUEST = 'FETCH_PERSON_REQUEST';
 const fetchPersonRequestAC = () => ({
-	type: FETCH_PERSON_LIST_REQUEST,
+	type: FETCH_PERSON_REQUEST,
 });
 
 const FETCH_PERSON_SUCCESS = 'FETCH_PERSON_SUCCESS';
-const fetchPersonSuccessAC = person => ({
-	type: FETCH_PERSON_LIST_SUCCESS,
-	person,
+const fetchPersonSuccessAC = personInfo => ({
+	type: FETCH_PERSON_SUCCESS,
+	personInfo,
 });
 
 const FETCH_PERSON_FAILURE = 'FETCH_PERSON_FAILURE';
 const fetchPersonFailureAC = errorMsg => ({
-	type: FETCH_PERSON_LIST_FAILURE,
+	type: FETCH_PERSON_FAILURE,
 	errorMsg,
 });
 
@@ -44,11 +44,6 @@ const changePagPageAC = pagPage => ({
 	pagPage,
 });
 
-const ADD_PERSON_INFO = 'ADD_PERSON_INFO';
-const addPersonInfoAC = personInfo => ({
-	type: ADD_PERSON_INFO,
-	personInfo,
-});
 
 const CHANGE_PERSON = 'CHANGE_PERSON';
 const changePersonAC = person => ({
@@ -78,33 +73,32 @@ const fetchPersonInfo = service => () => async (dispatch, getState) => {
 	}
 };
 
-// const fetchPersonList = service => () => async (dispatch, getState) => {
-// 	const {
-// 		list: { query, pagPage },
-// 	} = getState();
+const fetchPersonList = service => () => async (dispatch, getState) => {
+	const {
+		person: { person, pagPage },
+	} = getState();
 
-// 	dispatch(fetchPERSONListRequestAC());
+	dispatch(fetchPersonListRequestAC());
 
-// 	try {
-// 		const response = await service.getPERSONBySearch(query, pagPage);
+	try {
+		const response = await service.getPersonList(person, pagPage);
 
-// 		const { message, data : {total_count, items} } = response;
+		const { message, data : {total_count, items} } = response;
 
-// 		if (!message) {
-// 			dispatch(addTotalCountAC(total_count))
-// 			dispatch(fetchPERSONListSuccessAC(items));
-// 		} else {
-// 			dispatch(fetchPERSONListFailureAC(message));
-// 		}
-// 	} catch (err) {
-// 		dispatch(fetchPERSONListFailureAC(err.message));
-// 	}
-// };
+		if (!message) {
+			dispatch(addTotalCountAC(total_count))
+			dispatch(fetchPersonListSuccessAC(items));
+		} else {
+			dispatch(fetchPersonListFailureAC(message));
+		}
+	} catch (err) {
+		dispatch(fetchPersonListFailureAC(err.message));
+	}
+};
 
 export {
 	CHANGE_PERSON,
 	changePersonAC,
-	ADD_PERSON_INFO,
 	fetchPersonInfo,
 	FETCH_PERSON_REQUEST,
 	FETCH_PERSON_SUCCESS,

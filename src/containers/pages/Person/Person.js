@@ -26,16 +26,14 @@ class PersonContainer extends Component {
 	render() {
 		const {
 			status,
-			match: {
-				params: { id },
-			},
+			...rest
 		} = this.props;
 
-		if (status === statuses.REQUEST) {
+		if (status === statuses.REQUEST || !rest.personInfo) {
 			return <Spinner />;
 		}
 
-		return <Person person={id} />;
+		return <Person {...rest}/>;
 	}
 }
 
