@@ -44,7 +44,36 @@ const changePagPageAC = pagPage => ({
 	pagPage,
 });
 
-const fetchPERSON = service => () => async (dispatch, getState) => {
+const ADD_PERSON_INFO = 'ADD_PERSON_INFO';
+const addPersonInfoAC = personInfo => ({
+	type: ADD_PERSON_INFO,
+	personInfo,
+});
+
+const fetchPersonInfo = service => () => async (dispatch, getState) => {
+	const {
+		list: { query, pagPage },
+	} = getState();
+
+	dispatch(fetchPERSONListRequestAC());
+
+	try {
+		const response = await service.getPERSONBySearch(query, pagPage);
+
+		const { message, data : {total_count, items} } = response;
+
+		if (!message) {
+			dispatch(addTotalCountAC(total_count))
+			dispatch(fetchPERSONListSuccessAC(items));
+		} else {
+			dispatch(fetchPERSONListFailureAC(message));
+		}
+	} catch (err) {
+		dispatch(fetchPERSONListFailureAC(err.message));
+	}
+};
+
+const fetchPersonList = service => () => async (dispatch, getState) => {
 	const {
 		list: { query, pagPage },
 	} = getState();
