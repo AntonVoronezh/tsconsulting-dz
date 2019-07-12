@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 
-const Search = ({ fetchUsers }) => {
-	const [title, setTitle] = useState('');
+const Search = ({ fetchUsers, addQuery }) => {
+	const [query, setQuery] = useState('');
 
-	const onChangeTitle = e => {
-		setTitle(e.target.value);
+	const onChangeQuery = e => {
+		setQuery(e.target.value);
 	};
 
 	const searchHandler = e => {
 		e.preventDefault();
-		fetchUsers(title);
+		addQuery(query.replace( / /g, "+"));
+		fetchUsers();
 	};
 
 	return (
@@ -19,10 +20,10 @@ const Search = ({ fetchUsers }) => {
 				type="search"
 				placeholder="Search"
 				aria-label="Search"
-				value={title}
-				onChange={onChangeTitle}
+				value={query}
+				onChange={onChangeQuery}
 			/>
-			<button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+			<button className="btn btn-outline-success my-2 my-sm-0" type="submit" disabled={query.length === 0}>
 				Search
 			</button>
 		</form>
