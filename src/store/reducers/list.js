@@ -3,6 +3,7 @@ import {
 	FETCH_USERS_LIST_SUCCESS,
 	FETCH_USERS_LIST_FAILURE,
 	ADD_SEARCH_QUERY,
+	ADD_TOTAL_COUNT
 } from '../actions';
 import { statuses } from '../../helpers';
 
@@ -15,7 +16,7 @@ const initialState = {
 };
 
 const listRreducer = (state = initialState, action) => {
-	const { type, users, errorMsg, query } = action;
+	const { type, users, errorMsg, query, totalCount } = action;
 	switch (type) {
 		case FETCH_USERS_LIST_REQUEST: {
 			return {
@@ -43,6 +44,12 @@ const listRreducer = (state = initialState, action) => {
 			return {
 				...state,
 				query,
+			};
+		}
+		case ADD_TOTAL_COUNT: {
+			return {
+				...state,
+				totalCount,
 			};
 		}
 		default:

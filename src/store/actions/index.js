@@ -5,6 +5,7 @@ import {
 	fetchUsers,
 	ADD_SEARCH_QUERY,
 	addSearchQueryAC,
+	ADD_TOTAL_COUNT,
 } from './list';
 
 export {
@@ -14,4 +15,5 @@ export {
 	fetchUsers,
 	ADD_SEARCH_QUERY,
 	addSearchQueryAC,
+	ADD_TOTAL_COUNT,
 };

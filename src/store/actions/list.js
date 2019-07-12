@@ -21,6 +21,12 @@ const addSearchQueryAC = query => ({
 	query,
 });
 
+const ADD_TOTAL_COUNT = 'ADD_TOTAL_COUNT';
+const addTotalCountAC = totalCount => ({
+	type: ADD_TOTAL_COUNT,
+	totalCount,
+});
+
 const fetchUsers = service => () => async (dispatch, getState) => {
 	const {
 		list: { query },
@@ -50,4 +56,5 @@ export {
 	fetchUsers,
 	ADD_SEARCH_QUERY,
 	addSearchQueryAC,
+	ADD_TOTAL_COUNT
 };

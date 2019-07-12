@@ -11,7 +11,6 @@ export default class GithubService {
 
 
 	_getResourse =  (response, url) => {
-		debugger
 		if (!response.status === 200) {
 			throw new Error(`Could not fetch ${url}, resived ${response.status}`);
 		}
