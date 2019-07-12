@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import { List } from './containers/pages/List';
+import { Person } from './containers/pages/Person';
 
 const App = () => {
 	return (
@@ -13,7 +14,7 @@ const App = () => {
 			<main>
 				<Switch>
 					<Route path="/" exact render={() => <List />} />
-					<Route path="/person" exact render={() => 1} />
+					<Route path="/person/:id" render={() => <Person />} />
 					<Route render={() => <h2>Page not found</h2>} />
 				</Switch>
 			</main>
